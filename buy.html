@@ -5,6 +5,7 @@
 		<title>Buy One: Bottle Opener Credit Card</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<style type="text/css">
 		html, body {
@@ -65,51 +66,46 @@
 
       <!-- Example row of columns -->
       <div class="row-fluid">
-        <div class="span12">
+        <div class="offset3 span9">
           <h2>Order your Bottle Opener Credit Card for just $15.</h2>
 	    </div>
 	  </div>
 	  <div class="row-fluid">
 	  	<div class="span3">
-          <form style="text-align: center;">
-          	<img class="img-circle" src="img/product-thumb01.jpg">
-          	<p>1 Bottle Opener Credit Card<br>CAD $15<br>&nbsp;</p>
-          	<script
-			  src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
-			  data-key="pk_xBxOzA7AWHgOGSAbkyXd4MakpGLLm"
-			  data-amount="1500"
-			  data-name="Bottle Opener Credit Card"
-			  data-description="1 Bottle Opener ($15.00)"
-			  data-currency="cad">
-			</script>
-          </form>
-       </div>
-	  	<div class="offset1 span3">
-          <form style="text-align: center;">
-          	<img class="img-circle" src="img/product-thumb01.jpg">
-          	<p>Pack of 3 Bottle Opener Credit Cards<br>CAD $42<br>Save $3!</p>
-          	<script
-			  src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
-			  data-key="pk_xBxOzA7AWHgOGSAbkyXd4MakpGLLm"
-			  data-amount="4200"
-			  data-name="Bottle Opener Credit Card"
-			  data-description="3 Bottle Openers ($42.00)"
-			  data-currency="cad">
-			</script>
-          </form>
-       </div>
-	  	<div class="offset1 span3">
-          <form style="text-align: center;">
-          	<img class="img-circle" src="img/product-thumb01.jpg">
-          	<p>Pack of 5 Bottle Opener Credit Cards<br>CAD $55<br>Best Value! Save $10!</p>
-          	<script
-			  src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
-			  data-key="pk_xBxOzA7AWHgOGSAbkyXd4MakpGLLm"
-			  data-amount="5500"
-			  data-name="Bottle Opener Credit Card"
-			  data-description="5 Bottle Openers ($55.00)"
-			  data-currency="cad">
-			</script>
+          <img class="img-circle" src="img/product-thumb01.jpg">
+        </div>
+        <div class="span9">
+          <form class="form-horizontal well">
+          	<div class="control-group">
+          		<label class="control-label">How many?</label>
+          		<div class="controls">
+          		<select class="input-mini">
+          			<option>1</option>
+          			<option>2</option>
+          			<option>3</option>
+          			<option>4</option>
+          		</select>
+          		</div>
+          	</div>
+          	<div class="control-group">
+          		<label class="control-label">Name</label>
+          		<div class="controls">
+          		<input type="text" class="input-small" placeholder="First">
+          		<input type="text" class="input-small" placeholder="Last">
+          		</div>
+
+          	</div>
+          	<div class="control-group">
+          		<label class="control-label">Email</label>
+          		<div class="controls">
+          		<input type="email" class="input-large">
+          		</div>
+          	</div>
+          	<div class="control-group">
+          		<div class="controls">
+          		<input type="submit" class="btn btn-primary" value="Continue">
+          		</div>
+          	</div>
           </form>
        </div>
       </div>
