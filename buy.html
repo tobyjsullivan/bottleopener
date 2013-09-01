@@ -11,7 +11,7 @@
 			$scope.fetch = function() {
 				$http({
 					method: 'JSONP',
-					url: 'http://localhost:9000/orders?callback=JSON_CALLBACK',
+					url: 'http://bottle-opener.herokuapp.com/orders?callback=JSON_CALLBACK',
 					cache: $templateCache,
 					params: {
 						quantity: $scope.quantity,
