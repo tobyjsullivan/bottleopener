@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app>
 	<head>
 		<meta charset="utf-8">
 		<title>Buy One: Bottle Opener Credit Card</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+		<script>
+		function OrderController($scope, $http, $templateCache) {
+			$scope.fetch = function() {
+				$http({
+					method: 'JSONP',
+					url: 'http://localhost:9000/orders?callback=JSON_CALLBACK',
+					cache: $templateCache,
+					params: {
+						quantity: $scope.quantity,
+						first_name: $scope.first_name,
+						last_name: $scope.last_name,
+						email: $scope.email
+					}
+				}).success(function(data, status) {
+					$scope.order_id = data.order.order_id;
+				}).error(function(data, status) {
+					alert((data || "Request failed") + ":" + status)
+				})
+			}
+
+
+		}
+		</script>
 
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<style type="text/css">
@@ -42,7 +66,7 @@
 			color: #666;
 		}
 		</style>
-		<link href="css/bootstrap-responsice.css" rel="stylesheet">
+		<link href="css/bootstrap-responsive.css" rel="stylesheet">
 		<link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
 		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 	    <!--[if lt IE 9]>
@@ -75,11 +99,11 @@
           <img class="img-circle" src="img/product-thumb01.jpg">
         </div>
         <div class="span9">
-          <form class="form-horizontal well">
+          <form class="form-horizontal well" ng-controller="OrderController">
           	<div class="control-group">
           		<label class="control-label">How many?</label>
           		<div class="controls">
-          		<select class="input-mini">
+          		<select class="input-mini" ng-model="quantity">
           			<option>1</option>
           			<option>2</option>
           			<option>3</option>
@@ -90,20 +114,24 @@
           	<div class="control-group">
           		<label class="control-label">Name</label>
           		<div class="controls">
-          		<input type="text" class="input-small" placeholder="First">
-          		<input type="text" class="input-small" placeholder="Last">
+          		<input type="text" class="input-small" ng-model="first_name" placeholder="First">
+          		<input type="text" class="input-small" ng-model="last_name" placeholder="Last">
           		</div>
 
           	</div>
           	<div class="control-group">
           		<label class="control-label">Email</label>
           		<div class="controls">
-          		<input type="email" class="input-large">
+          		<input type="email" class="input-large" ng-model="email">
           		</div>
           	</div>
           	<div class="control-group">
           		<div class="controls">
-          		<input type="submit" class="btn btn-primary" value="Continue">
+          		<button ng-click="fetch()" class="btn btn-primary">Continue</button>
+          		</div>
+          		<div class="controls">
+          			<input type="hidden" ng-model="order_id">
+          			<span class="help-block">{{order_id}}</span>
           		</div>
           	</div>
           </form>
